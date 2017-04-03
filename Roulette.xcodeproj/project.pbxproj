@@ -12,6 +12,7 @@
 		A6D2589D1E926ABD00D6E858 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D2589B1E926ABD00D6E858 /* Main.storyboard */; };
 		A6D2589F1E926ABD00D6E858 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6D2589E1E926ABD00D6E858 /* Assets.xcassets */; };
 		A6D258A21E926ABD00D6E858 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D258A01E926ABD00D6E858 /* LaunchScreen.storyboard */; };
+		A6D258AF1E926D8200D6E858 /* RouletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D258AE1E926D8200D6E858 /* RouletteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,8 @@
 		A6D2589E1E926ABD00D6E858 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6D258A11E926ABD00D6E858 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6D258A31E926ABD00D6E858 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6D258AD1E926D8200D6E858 /* RouletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouletteViewController.h; path = ViewControllers/RouletteViewController.h; sourceTree = "<group>"; };
+		A6D258AE1E926D8200D6E858 /* RouletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RouletteViewController.m; path = ViewControllers/RouletteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +75,14 @@
 				A6D258961E926ABD00D6E858 /* AppDelegate.m */,
 				A6D258931E926ABD00D6E858 /* main.m */,
 			);
-			name = App;
+			path = App;
 			sourceTree = "<group>";
 		};
 		A6D258AA1E926B1F00D6E858 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A6D258AD1E926D8200D6E858 /* RouletteViewController.h */,
+				A6D258AE1E926D8200D6E858 /* RouletteViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6D258AF1E926D8200D6E858 /* RouletteViewController.m in Sources */,
 				A6D258971E926ABD00D6E858 /* AppDelegate.m in Sources */,
 				A6D258941E926ABD00D6E858 /* main.m in Sources */,
 			);
