@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +22,38 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgC-wP-bYw">
+                                <rect key="frame" x="0.0" y="146" width="375" height="375"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5f-kc-8DW" customClass="WheelView">
+                                        <rect key="frame" x="8" y="8" width="359" height="359"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="K5f-kc-8DW" firstAttribute="leading" secondItem="pgC-wP-bYw" secondAttribute="leadingMargin" id="2DF-L4-TSy"/>
+                                    <constraint firstAttribute="width" secondItem="pgC-wP-bYw" secondAttribute="height" multiplier="1:1" id="Cfh-bA-HYn"/>
+                                    <constraint firstItem="K5f-kc-8DW" firstAttribute="top" secondItem="pgC-wP-bYw" secondAttribute="topMargin" id="dST-mO-e1p"/>
+                                    <constraint firstItem="K5f-kc-8DW" firstAttribute="bottom" secondItem="pgC-wP-bYw" secondAttribute="bottomMargin" id="izi-aI-4yP"/>
+                                    <constraint firstItem="K5f-kc-8DW" firstAttribute="trailing" secondItem="pgC-wP-bYw" secondAttribute="trailingMargin" id="wwM-wO-gG5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pgC-wP-bYw" firstAttribute="height" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" id="4Yb-eK-4ci"/>
+                            <constraint firstItem="pgC-wP-bYw" firstAttribute="width" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Lnb-P8-PPf"/>
+                            <constraint firstItem="pgC-wP-bYw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Z4A-ws-0rJ"/>
+                            <constraint firstItem="pgC-wP-bYw" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" priority="750" id="mzz-XG-L9L"/>
+                            <constraint firstItem="pgC-wP-bYw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o1y-Ox-gRH"/>
+                            <constraint firstItem="pgC-wP-bYw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" priority="750" id="sOr-Pu-sL5"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>

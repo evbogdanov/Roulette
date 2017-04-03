@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6BE3CC01E9287F10071FE79 /* WheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BE3CBF1E9287F10071FE79 /* WheelView.m */; };
 		A6D258941E926ABD00D6E858 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D258931E926ABD00D6E858 /* main.m */; };
 		A6D258971E926ABD00D6E858 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D258961E926ABD00D6E858 /* AppDelegate.m */; };
 		A6D2589D1E926ABD00D6E858 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D2589B1E926ABD00D6E858 /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A6BE3CBE1E9287F10071FE79 /* WheelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheelView.h; path = Views/WheelView.h; sourceTree = "<group>"; };
+		A6BE3CBF1E9287F10071FE79 /* WheelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WheelView.m; path = Views/WheelView.m; sourceTree = "<group>"; };
 		A6D2588F1E926ABD00D6E858 /* Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D258931E926ABD00D6E858 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A6D258951E926ABD00D6E858 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +42,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A6BE3CBD1E9287820071FE79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A6BE3CBE1E9287F10071FE79 /* WheelView.h */,
+				A6BE3CBF1E9287F10071FE79 /* WheelView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		A6D258861E926ABD00D6E858 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +75,7 @@
 				A6D258AB1E926BC700D6E858 /* Base.lproj */,
 				A6D258AC1E926BEC00D6E858 /* Models */,
 				A6D258AA1E926B1F00D6E858 /* ViewControllers */,
+				A6BE3CBD1E9287820071FE79 /* Views */,
 				A6D258A31E926ABD00D6E858 /* Info.plist */,
 			);
 			path = Roulette;
@@ -177,6 +190,7 @@
 			files = (
 				A6D258AF1E926D8200D6E858 /* RouletteViewController.m in Sources */,
 				A6D258971E926ABD00D6E858 /* AppDelegate.m in Sources */,
+				A6BE3CC01E9287F10071FE79 /* WheelView.m in Sources */,
 				A6D258941E926ABD00D6E858 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +352,7 @@
 				A6D258A81E926ABD00D6E858 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
