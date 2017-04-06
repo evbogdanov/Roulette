@@ -19,7 +19,7 @@ static const CGFloat POCKET_HEIGHT_RATIO = 1.0 / 4;
 static const CGFloat POCKET_TOP_MARGIN_RATIO = POCKET_HEIGHT_RATIO / 3;
 static const CGFloat POCKET_FONT_SIZE_RATIO = POCKET_TOP_MARGIN_RATIO;
 
-// Quick fix for a better number aligning
+// Quick fix for a better number alignment
 static const CGFloat POCKET_WIDTH_FIX_RATIO = 17.0 / 20;
 
 // Index => Number
@@ -93,11 +93,11 @@ static int NUMBERS[NUMBER_OF_POCKETS] = {
     
     CGRect numberBounds;
     
-    // Default coordinates
+    // Default bounds
     // numberBounds.origin = [pocket bounds].origin;
     // numberBounds.size = [pocket bounds].size;
     
-    // Better coordinates
+    // Prettier bounds (better number alignment)
     numberBounds.origin.x = [pocket bounds].origin.x;
     numberBounds.origin.y = [pocket bounds].origin.y + [self pocketTopMargin];
     numberBounds.size.width = [pocket bounds].size.width * POCKET_WIDTH_FIX_RATIO;
