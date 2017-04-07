@@ -12,15 +12,13 @@
 
 static const int NUMBER_OF_POCKETS = 37;
 static const CGFloat POCKET_DEGREES = 360.0 / NUMBER_OF_POCKETS;
+static const CGFloat POCKET_DEGREES_HALF = POCKET_DEGREES / 2;
 
 // Wheel radius is 4/4
 static const CGFloat WHITE_IN_THE_MIDDLE_RATIO = 3.0 / 4;
 static const CGFloat POCKET_HEIGHT_RATIO = 1.0 / 4;
 static const CGFloat POCKET_TOP_MARGIN_RATIO = POCKET_HEIGHT_RATIO / 3;
 static const CGFloat POCKET_FONT_SIZE_RATIO = POCKET_TOP_MARGIN_RATIO;
-
-// Quick fix for a better number alignment
-static const CGFloat POCKET_WIDTH_FIX_RATIO = 17.0 / 20;
 
 // Index => Number
 static int NUMBERS[NUMBER_OF_POCKETS] = {
@@ -61,8 +59,8 @@ static int NUMBERS[NUMBER_OF_POCKETS] = {
     // Add arc
     [pocket addArcWithCenter:center
                       radius:[self wheelRadius]
-                  startAngle:[self radiansFromDegrees:-90]
-                    endAngle:[self radiansFromDegrees:POCKET_DEGREES-90]
+                  startAngle:[self radiansFromDegrees:-90-POCKET_DEGREES_HALF]
+                    endAngle:[self radiansFromDegrees:-90+POCKET_DEGREES_HALF]
                    clockwise:YES];
     
     // Pocket path is ready
@@ -86,23 +84,15 @@ static int NUMBERS[NUMBER_OF_POCKETS] = {
     NSDictionary *numberAttrs = @{
                                   NSParagraphStyleAttributeName: paragraphStyle,
                                   NSForegroundColorAttributeName: [UIColor whiteColor],
-                                  NSFontAttributeName: [UIFont italicSystemFontOfSize:[self pocketFontSize]]
+                                  NSFontAttributeName: [UIFont systemFontOfSize:[self pocketFontSize]]
                                   };
     NSAttributedString *numberAttrStr = [[NSAttributedString alloc] initWithString:numberStr
                                                                         attributes:numberAttrs];
-    
+
     CGRect numberBounds;
-    
-    // Default bounds
-    // numberBounds.origin = [pocket bounds].origin;
-    // numberBounds.size = [pocket bounds].size;
-    
-    // Prettier bounds (better number alignment)
     numberBounds.origin.x = [pocket bounds].origin.x;
     numberBounds.origin.y = [pocket bounds].origin.y + [self pocketTopMargin];
-    numberBounds.size.width = [pocket bounds].size.width * POCKET_WIDTH_FIX_RATIO;
-    numberBounds.size.height = [pocket bounds].size.height;
-    
+    numberBounds.size = [pocket bounds].size;
     [numberAttrStr drawInRect:numberBounds];
 }
 
