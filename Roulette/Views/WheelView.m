@@ -15,10 +15,11 @@ static const CGFloat POCKET_DEGREES = 360.0 / NUMBER_OF_POCKETS;
 static const CGFloat POCKET_DEGREES_HALF = POCKET_DEGREES / 2;
 
 // Wheel radius is 4/4
-static const CGFloat WHITE_IN_THE_MIDDLE_RATIO = 3.0 / 4;
+static const CGFloat CENTER_RATIO = 1.0 / 2;
 static const CGFloat POCKET_HEIGHT_RATIO = 1.0 / 4;
 static const CGFloat POCKET_TOP_MARGIN_RATIO = POCKET_HEIGHT_RATIO / 3;
 static const CGFloat POCKET_FONT_SIZE_RATIO = POCKET_TOP_MARGIN_RATIO;
+static const CGFloat POCKETS_BORDER_RATIO = 3.0 / 4;
 
 // Index => Number
 static int NUMBERS[NUMBER_OF_POCKETS] = {
@@ -34,6 +35,14 @@ static int NUMBERS[NUMBER_OF_POCKETS] = {
 - (CGPoint)wheelCenter {
     return CGPointMake(self.bounds.size.width / 2,
                        self.bounds.size.height / 2);
+}
+
+- (UIColor *)lightGreenColor {
+    return [UIColor colorWithRed:0.26 green:0.84 blue:0.32 alpha:1.0];
+}
+
+- (UIColor *)darkGreenColor {
+    return [UIColor colorWithRed:0.09 green:0.52 blue:0.08 alpha:1.0];
 }
 
 - (CGFloat)wheelRadius {
@@ -68,13 +77,18 @@ static int NUMBERS[NUMBER_OF_POCKETS] = {
     
     // Paint it black! (or red, or green)
     if (index == 0)
-        [[UIColor greenColor] setFill];
+        [[self lightGreenColor] setFill];
     else if (index % 2)
         [[UIColor redColor] setFill];
     else
         [[UIColor blackColor] setFill];
     
     [pocket fill];
+
+    // Pocket borders
+    [[UIColor whiteColor] setStroke];
+    [pocket setLineWidth:1];
+    [pocket stroke];
     
     // Pocket has a number
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
@@ -109,30 +123,59 @@ static int NUMBERS[NUMBER_OF_POCKETS] = {
     CGContextRestoreGState(context);
 }
 
-- (void)drawSomeWhiteInTheMiddle {
-    UIBezierPath *whiteInTheMiddle = [[UIBezierPath alloc] init];
-    
-    [whiteInTheMiddle addArcWithCenter:[self wheelCenter]
-                                radius:[self wheelRadius]*WHITE_IN_THE_MIDDLE_RATIO
-                            startAngle:[self radiansFromDegrees:0]
-                              endAngle:[self radiansFromDegrees:360]
-                             clockwise:YES];
-    
-    [[UIColor whiteColor] setFill];
-    [whiteInTheMiddle fill];
+- (void)drawPocketsBorder {
+    UIBezierPath *pocketsBorder = [[UIBezierPath alloc] init];
+
+    [pocketsBorder addArcWithCenter:[self wheelCenter]
+                             radius:[self wheelRadius]*POCKETS_BORDER_RATIO
+                         startAngle:[self radiansFromDegrees:0]
+                           endAngle:[self radiansFromDegrees:360]
+                          clockwise:YES];
+
+    [[UIColor whiteColor] setStroke];
+    [pocketsBorder setLineWidth:1];
+    [pocketsBorder stroke];
+}
+
+- (void)drawCenter {
+    UIBezierPath *center = [[UIBezierPath alloc] init];
+
+    [center addArcWithCenter:[self wheelCenter]
+                      radius:[self wheelRadius]*CENTER_RATIO
+                  startAngle:[self radiansFromDegrees:0]
+                    endAngle:[self radiansFromDegrees:360]
+                   clockwise:YES];
+
+    [[UIColor whiteColor] setStroke];
+    [center setLineWidth:1];
+    [center stroke];
+
+    [[self darkGreenColor] setFill];
+    [center fill];
 }
 
 - (void)drawRect:(CGRect)rect {
     // Draw wheel foundation
-     UIBezierPath *wheel = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+    UIBezierPath *wheel = [UIBezierPath bezierPathWithRoundedRect:self.bounds
                                                       cornerRadius:self.bounds.size.width];
     [wheel addClip];
-    
+
     // Draw pockets on the wheel
     [self drawPockets];
+
+    // Draw pockets' border
+    [self drawPocketsBorder];
     
-    // Draw some white in the middle
-    [self drawSomeWhiteInTheMiddle];
+    // Draw the center
+    [self drawCenter];
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+
+    // Get rid of background
+    self.backgroundColor = nil;
+    self.opaque = NO;
 }
 
 - (CGFloat)radiansFromDegrees:(CGFloat)degrees {
