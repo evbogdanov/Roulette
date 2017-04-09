@@ -31,22 +31,16 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wmr-sM-JGc" customClass="BallView">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="398"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLD-dY-9va">
-                                                        <rect key="frame" x="183.66666666666669" y="184" width="31" height="30"/>
-                                                        <state key="normal" title="Spin">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="spin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qbJ-gH-S09"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="zLD-dY-9va" firstAttribute="centerX" secondItem="Wmr-sM-JGc" secondAttribute="centerX" id="8Ys-CF-PTQ"/>
-                                                    <constraint firstItem="zLD-dY-9va" firstAttribute="centerY" secondItem="Wmr-sM-JGc" secondAttribute="centerY" id="EWA-zQ-hDG"/>
-                                                </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLD-dY-9va">
+                                                <rect key="frame" x="183.66666666666669" y="184" width="31" height="30"/>
+                                                <state key="normal" title="Spin">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="spin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qbJ-gH-S09"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Wmr-sM-JGc" firstAttribute="width" secondItem="K5f-kc-8DW" secondAttribute="width" id="0NC-75-1Fj"/>
@@ -73,6 +67,8 @@
                             <constraint firstItem="pgC-wP-bYw" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" priority="750" id="mzz-XG-L9L"/>
                             <constraint firstItem="pgC-wP-bYw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o1y-Ox-gRH"/>
                             <constraint firstItem="pgC-wP-bYw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" priority="750" id="sOr-Pu-sL5"/>
+                            <constraint firstItem="zLD-dY-9va" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="y6V-kH-zWa"/>
+                            <constraint firstItem="zLD-dY-9va" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yfq-em-4kz"/>
                         </constraints>
                     </view>
                     <connections>
