@@ -20,8 +20,6 @@ static const CGFloat POCKET_HEIGHT_RATIO = 1.0 / 4;
 static const CGFloat POCKET_TOP_MARGIN_RATIO = POCKET_HEIGHT_RATIO / 3;
 static const CGFloat POCKET_FONT_SIZE_RATIO = POCKET_TOP_MARGIN_RATIO;
 static const CGFloat POCKETS_BORDER_RATIO = 3.0 / 4;
-static const CGFloat BALL_TOP_MARGIN_RATIO = 3.0 / 8;
-static const CGFloat BALL_RADIUS_RATIO = 1.0 / 12;
 
 // Index => Number
 static int NUMBERS[NUMBER_OF_POCKETS] = {
@@ -34,14 +32,6 @@ static int NUMBERS[NUMBER_OF_POCKETS] = {
      7,  28,  12,  35,   3,  26
 };
 
-- (CGPoint)ballCenter {
-    return CGPointMake(self.bounds.size.width / 2,
-                       [self wheelRadius] * BALL_TOP_MARGIN_RATIO);
-}
-
-- (CGFloat)ballRadius {
-    return [self wheelRadius] * BALL_RADIUS_RATIO;
-}
 
 - (CGPoint)wheelCenter {
     return CGPointMake(self.bounds.size.width / 2,
@@ -165,19 +155,6 @@ static int NUMBERS[NUMBER_OF_POCKETS] = {
     [center fill];
 }
 
-- (void)drawBall {
-    UIBezierPath *ball = [[UIBezierPath alloc] init];
-
-    [ball addArcWithCenter:[self ballCenter]
-                    radius:[self ballRadius]
-                startAngle:[self radiansFromDegrees:0]
-                  endAngle:[self radiansFromDegrees:360]
-                 clockwise:YES];
-
-    [[UIColor whiteColor] setFill];
-    [ball fill];
-}
-
 - (void)drawRect:(CGRect)rect {
     // Draw wheel foundation
     UIBezierPath *wheel = [UIBezierPath bezierPathWithRoundedRect:self.bounds
@@ -192,9 +169,6 @@ static int NUMBERS[NUMBER_OF_POCKETS] = {
     
     // Draw the center
     [self drawCenter];
-
-    // Draw the ball
-    [self drawBall];
 }
 
 - (void)awakeFromNib {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,28 +20,39 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgC-wP-bYw">
-                                <rect key="frame" x="0.0" y="161" width="414" height="414"/>
+                                <rect key="frame" x="161" y="0.0" width="414" height="414"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5f-kc-8DW" customClass="WheelView">
                                         <rect key="frame" x="8" y="8" width="398" height="398"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44t-6o-H4X">
-                                                <rect key="frame" x="175.66666666666666" y="183.66666666666669" width="46" height="30"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wmr-sM-JGc" customClass="BallView">
+                                                <rect key="frame" x="0.0" y="0.0" width="398" height="398"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLD-dY-9va">
+                                                        <rect key="frame" x="183.66666666666669" y="184" width="31" height="30"/>
+                                                        <state key="normal" title="Spin">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="spin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qbJ-gH-S09"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="46" id="oU5-EJ-rvv"/>
+                                                    <constraint firstItem="zLD-dY-9va" firstAttribute="centerX" secondItem="Wmr-sM-JGc" secondAttribute="centerX" id="8Ys-CF-PTQ"/>
+                                                    <constraint firstItem="zLD-dY-9va" firstAttribute="centerY" secondItem="Wmr-sM-JGc" secondAttribute="centerY" id="EWA-zQ-hDG"/>
                                                 </constraints>
-                                                <state key="normal" title="Spin">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
+                                            </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="44t-6o-H4X" firstAttribute="centerY" secondItem="K5f-kc-8DW" secondAttribute="centerY" id="K9r-st-keH"/>
-                                            <constraint firstItem="44t-6o-H4X" firstAttribute="centerX" secondItem="K5f-kc-8DW" secondAttribute="centerX" id="Wlz-LP-eBi"/>
+                                            <constraint firstItem="Wmr-sM-JGc" firstAttribute="width" secondItem="K5f-kc-8DW" secondAttribute="width" id="0NC-75-1Fj"/>
+                                            <constraint firstItem="Wmr-sM-JGc" firstAttribute="height" secondItem="K5f-kc-8DW" secondAttribute="height" id="0Uz-PJ-RP7"/>
+                                            <constraint firstItem="Wmr-sM-JGc" firstAttribute="centerY" secondItem="K5f-kc-8DW" secondAttribute="centerY" id="6SE-Ry-q4O"/>
+                                            <constraint firstItem="Wmr-sM-JGc" firstAttribute="centerX" secondItem="K5f-kc-8DW" secondAttribute="centerX" id="j5G-hx-WVV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -64,10 +75,13 @@
                             <constraint firstItem="pgC-wP-bYw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" priority="750" id="sOr-Pu-sL5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ballView" destination="Wmr-sM-JGc" id="t4a-6V-abk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="136.23188405797103" y="138.58695652173915"/>
         </scene>
     </scenes>
 </document>
