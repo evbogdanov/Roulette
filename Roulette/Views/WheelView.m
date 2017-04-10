@@ -22,7 +22,7 @@ static const CGFloat POCKET_FONT_SIZE_RATIO = POCKET_TOP_MARGIN_RATIO;
 static const CGFloat POCKETS_BORDER_RATIO = 3.0 / 4;
 
 // Index => Number
-static int NUMBERS[NUMBER_OF_POCKETS] = {
+static const int NUMBERS[NUMBER_OF_POCKETS] = {
     0,
     32,  15,  19,   4,  21,   2,
     25,  17,  34,   6,  27,  13,
@@ -31,7 +31,6 @@ static int NUMBERS[NUMBER_OF_POCKETS] = {
     14,  31,   9,  22,  18,  29,
      7,  28,  12,  35,   3,  26
 };
-
 
 - (CGPoint)wheelCenter {
     return CGPointMake(self.bounds.size.width / 2,
