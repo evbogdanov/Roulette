@@ -18,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A663FC241E9DBF3B00C802BC /* Geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Geometry.h; path = Geometry/Geometry.h; sourceTree = "<group>"; };
 		A6BE3CBE1E9287F10071FE79 /* WheelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheelView.h; path = Views/WheelView.h; sourceTree = "<group>"; };
 		A6BE3CBF1E9287F10071FE79 /* WheelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WheelView.m; path = Views/WheelView.m; sourceTree = "<group>"; };
 		A6CFA8911E9ADE030094019A /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallView.h; path = Views/BallView.h; sourceTree = "<group>"; };
@@ -78,7 +79,7 @@
 				A6D258A91E926AFB00D6E858 /* App */,
 				A6D2589E1E926ABD00D6E858 /* Assets.xcassets */,
 				A6D258AB1E926BC700D6E858 /* Base.lproj */,
-				A6D258AC1E926BEC00D6E858 /* Models */,
+				A6D258AC1E926BEC00D6E858 /* Geometry */,
 				A6D258AA1E926B1F00D6E858 /* ViewControllers */,
 				A6BE3CBD1E9287820071FE79 /* Views */,
 				A6D258A31E926ABD00D6E858 /* Info.plist */,
@@ -114,11 +115,12 @@
 			name = Base.lproj;
 			sourceTree = "<group>";
 		};
-		A6D258AC1E926BEC00D6E858 /* Models */ = {
+		A6D258AC1E926BEC00D6E858 /* Geometry */ = {
 			isa = PBXGroup;
 			children = (
+				A663FC241E9DBF3B00C802BC /* Geometry.h */,
 			);
-			name = Models;
+			name = Geometry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

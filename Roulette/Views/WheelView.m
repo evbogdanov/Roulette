@@ -7,30 +7,23 @@
 //
 
 #import "WheelView.h"
+#import "../Geometry/Geometry.h"
 
 @implementation WheelView
 
-static const int NUMBER_OF_POCKETS = 37;
-static const CGFloat POCKET_DEGREES = 360.0 / NUMBER_OF_POCKETS;
-static const CGFloat POCKET_DEGREES_HALF = POCKET_DEGREES / 2;
+- (int)numberForIndex:(int)index {
+    static const int numbers[WHEEL_NUMBER_OF_POCKETS] = {
+        0,
+        32,  15,  19,   4,  21,   2,
+        25,  17,  34,   6,  27,  13,
+        36,  11,  30,   8,  23,  10,
+         5,  24,  16,  33,   1,  20,
+        14,  31,   9,  22,  18,  29,
+         7,  28,  12,  35,   3,  26
+    };
 
-// Wheel radius is 4/4
-static const CGFloat CENTER_RATIO = 1.0 / 2;
-static const CGFloat POCKET_HEIGHT_RATIO = 1.0 / 4;
-static const CGFloat POCKET_TOP_MARGIN_RATIO = POCKET_HEIGHT_RATIO / 3;
-static const CGFloat POCKET_FONT_SIZE_RATIO = POCKET_TOP_MARGIN_RATIO;
-static const CGFloat POCKETS_BORDER_RATIO = 3.0 / 4;
-
-// Index => Number
-static const int NUMBERS[NUMBER_OF_POCKETS] = {
-    0,
-    32,  15,  19,   4,  21,   2,
-    25,  17,  34,   6,  27,  13,
-    36,  11,  30,   8,  23,  10,
-     5,  24,  16,  33,   1,  20,
-    14,  31,   9,  22,  18,  29,
-     7,  28,  12,  35,   3,  26
-};
+    return numbers[index];
+}
 
 - (CGPoint)wheelCenter {
     return CGPointMake(self.bounds.size.width / 2,
@@ -51,11 +44,11 @@ static const int NUMBERS[NUMBER_OF_POCKETS] = {
 }
 
 - (CGFloat)pocketTopMargin {
-    return [self wheelRadius] * POCKET_TOP_MARGIN_RATIO;
+    return [self wheelRadius] * WHEEL_POCKET_TOP_MARGIN_RATIO;
 }
 
 - (CGFloat)pocketFontSize {
-    return [self wheelRadius] * POCKET_FONT_SIZE_RATIO;
+    return [self wheelRadius] * WHEEL_POCKET_FONT_SIZE_RATIO;
 }
 
 - (void)drawPocketWithIndex:(int)index {
@@ -68,8 +61,8 @@ static const int NUMBERS[NUMBER_OF_POCKETS] = {
     // Add arc
     [pocket addArcWithCenter:center
                       radius:[self wheelRadius]
-                  startAngle:[self radiansFromDegrees:-90-POCKET_DEGREES_HALF]
-                    endAngle:[self radiansFromDegrees:-90+POCKET_DEGREES_HALF]
+                  startAngle:RADIANS_FROM_DEGREES(-90-WHEEL_POCKET_DEGREES_HALF)
+                    endAngle:RADIANS_FROM_DEGREES(-90+WHEEL_POCKET_DEGREES_HALF)
                    clockwise:YES];
     
     // Pocket path is ready
@@ -94,7 +87,7 @@ static const int NUMBERS[NUMBER_OF_POCKETS] = {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.alignment = NSTextAlignmentCenter;
     
-    NSString *numberStr = [NSString stringWithFormat:@"%i", NUMBERS[index]];
+    NSString *numberStr = [NSString stringWithFormat:@"%i", [self numberForIndex:index]];
     NSDictionary *numberAttrs = @{
                                   NSParagraphStyleAttributeName: paragraphStyle,
                                   NSForegroundColorAttributeName: [UIColor whiteColor],
@@ -115,9 +108,9 @@ static const int NUMBERS[NUMBER_OF_POCKETS] = {
     CGContextSaveGState(context);
     CGContextTranslateCTM(context, [self wheelCenter].x, [self wheelCenter].y);
     
-    for (int index = 0; index < NUMBER_OF_POCKETS; index += 1) {
+    for (int index = 0; index < WHEEL_NUMBER_OF_POCKETS; index += 1) {
         [self drawPocketWithIndex:index];
-        CGContextRotateCTM(context, [self radiansFromDegrees:POCKET_DEGREES]);
+        CGContextRotateCTM(context, RADIANS_FROM_DEGREES(WHEEL_POCKET_DEGREES));
     }
     
     CGContextRestoreGState(context);
@@ -127,9 +120,9 @@ static const int NUMBERS[NUMBER_OF_POCKETS] = {
     UIBezierPath *pocketsBorder = [[UIBezierPath alloc] init];
 
     [pocketsBorder addArcWithCenter:[self wheelCenter]
-                             radius:[self wheelRadius]*POCKETS_BORDER_RATIO
-                         startAngle:[self radiansFromDegrees:0]
-                           endAngle:[self radiansFromDegrees:360]
+                             radius:[self wheelRadius]*WHEEL_POCKETS_BORDER_RATIO
+                         startAngle:RADIANS_FROM_DEGREES(0.0)
+                           endAngle:RADIANS_FROM_DEGREES(360.0)
                           clockwise:YES];
 
     [[UIColor whiteColor] setStroke];
@@ -141,9 +134,9 @@ static const int NUMBERS[NUMBER_OF_POCKETS] = {
     UIBezierPath *center = [[UIBezierPath alloc] init];
 
     [center addArcWithCenter:[self wheelCenter]
-                      radius:[self wheelRadius]*CENTER_RATIO
-                  startAngle:[self radiansFromDegrees:0]
-                    endAngle:[self radiansFromDegrees:360]
+                      radius:[self wheelRadius]*WHEEL_CENTER_RATIO
+                  startAngle:RADIANS_FROM_DEGREES(0.0)
+                    endAngle:RADIANS_FROM_DEGREES(360.0)
                    clockwise:YES];
 
     [[UIColor whiteColor] setStroke];
@@ -178,8 +171,6 @@ static const int NUMBERS[NUMBER_OF_POCKETS] = {
     self.opaque = NO;
 }
 
-- (CGFloat)radiansFromDegrees:(CGFloat)degrees {
-    return degrees * M_PI / 180.0f;
-}
+
 
 @end

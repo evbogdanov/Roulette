@@ -7,20 +7,17 @@
 //
 
 #import "BallView.h"
+#import "../Geometry/Geometry.h"
 
 @implementation BallView
 
-#define BALL_TOP_MARGIN_RATIO 3.0 / 8
-#define BALL_RADIUS_RATIO 1.0 / 12
-#define CENTER self.bounds.size.width / 2
-
 - (CGPoint)ballCenter {
-    return CGPointMake(CENTER,
-                       CENTER * BALL_TOP_MARGIN_RATIO);
+    return CGPointMake(BALL_CENTER,
+                       BALL_CENTER * BALL_TOP_MARGIN_RATIO);
 }
 
 - (CGFloat)ballRadius {
-    return CENTER * BALL_RADIUS_RATIO;
+    return BALL_CENTER * BALL_RADIUS_RATIO;
 }
 
 - (void)drawRect:(CGRect)rect {
